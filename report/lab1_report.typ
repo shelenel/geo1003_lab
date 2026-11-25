@@ -18,3 +18,10 @@
 After removing the unwanted points, a concave hull was made with the resulting points using the `Concave Hull (by layer)` function in QGIS. The perimeter and area were calculated based on the resulting concave hull, using `area($geometry)` and `perimeter($geometry)` in the `Field Calculator` of QGIS. A concave hull was chosen instead of a convex hull because of the shape of the building, since the building is not a a perfect rectangle (but with 'indents') and an attempt was made to preserve the integrity of the shape of the building. 
 
 *An area of approximately $23,789m^2$ was obtained, with an approximate perimeter of $666m$.*
+
+= Lab 1b
+== RTK measuring - Perimeter and Area
+
+After cleaning the data such that we can obtain the longitude and latitude for each point, we connect the points in the order they were obtained. This leads to a counterclockwise trace around the building, visible in the black lines in Figure 2. We obtain the perimeter from summing the length of the line segments using a Python script. The area was obtained using QGIS. We first turned the connected line segments into a polygon using the Polygonize function. After this we could calculate the area using the field calculator with `$area`.
+
+*We calculated an area of $13116m^2$ and a perimeter of 1141m.*

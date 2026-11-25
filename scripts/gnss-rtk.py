@@ -2,6 +2,7 @@ import csv
 import json
 import numpy as np
 from typing import Any
+from coordinates import transform_coord
 
 def write_geojson(path, mygeojson):
     with open(path, "w") as f:
@@ -19,12 +20,20 @@ def make_geojson(lines):
         mygeojson["features"].append(f)
     return mygeojson
 
-def make_lines(csv_file):
-    coords = []
+def make_lines(coords):
     lines = []
+    s = 0
+    for i in range(0, len(coords)):
+        line = [coords[i - 1], coords[i]]
+        lines.append(line)
+        s += np.linalg.norm(np.array(list(line[1])) - np.array(list(line[0])))
+    print("Perimeter:", s)
+    return lines
+
+def make_coords(csv_file):
+    coords = []
     with open(csv_file, "r") as f:
         file = csv.reader(f, delimiter=";")
-        index = 0
         for row in file:
             lat = row[1]
             lat_deg = float(lat[:2])
@@ -36,17 +45,13 @@ def make_lines(csv_file):
             lon_arcmin = float(lon[2:4])
             lon_arcsec = float(lon[5:len(lon)-1])
             longitude = lon_deg + lon_arcmin/60 + lon_arcsec/3600
-            coords.append([longitude, latitude])
-            if index > 0:
-                line = [coords[index-1], coords[index]]
-                print(line)
-                lines.append(line)
-            index += 1
-    lines.append([coords[-1], coords[0]])
-    # coords = np.asarray(coords)
-    # np.savetxt("buildingcoords.csv", coords, delimiter=",")
-    return lines
+            coords.append((latitude, longitude))
+    coords = np.asarray(coords)
+    return coords
 
-lines = make_lines("totalstation_points.csv")
+coords = make_coords("../data/totalstation_points.csv")
+np.savetxt("../data/qgis/building_coords_part_1b.csv", coords, delimiter=",", header="y, x")
+points = transform_coord(coords)
+lines = make_lines(points)
 geojson = make_geojson(lines)
-write_geojson("building_outline.geojson", geojson)
+# write_geojson("../data/qgis/building_outline_part_1b.geojson", geojson)
