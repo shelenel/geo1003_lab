@@ -13,6 +13,9 @@
   #figure(image("images/bk_walk_allpoints.jpg", width: 70%), caption: [All recorded points from smartphone GNSS, extracted from GNSS text file log]) <bk_phone_walk_allpts>
 ]
 
+/// SHELENE NEEDS TO CHANGE THIS PART TO ONLY USING POINTS WITH 'FIX, GPS' 
+/// 
+
 @bk_phone_walk_allpts shows all the recorded points from an android smartphone GNSS, during our walk around the Architecture faculty. This also includes unwanted inaccurate points that do not necessarily correspond correctly to the perimeter of the faculty. As such, pre-processing of the points was done in QGIS by removing manually these unwanted points before the calculation of the area and perimeter. Such points include those that lie within the interior of the building.
 
 #align(center)[
@@ -22,9 +25,9 @@
 
 After removing the unwanted points, a concave hull was made with the resulting points using the `Concave Hull (by layer)` function in QGIS. As observed in @concave-hull, the resulting concave hull is not accurate and greatly changes the integrity of the building footprint.
 
-Regardless, the perimeter and area were calculated based on the resulting concave hull, using `$area` and `$perimeter` in the `Field Calculator` of QGIS. A concave hull was chosen instead of a convex hull because of the shape of the building, since the building is not a a perfect rectangle (but with 'indents') and an attempt was made to preserve the integrity of the shape of the building. 
+Regardless, the perimeter and area were calculated based on the resulting concave hull, using `$area` and `$perimeter` in the `Field Calculator` of QGIS. A concave hull was chosen instead of a convex hull because of the shape of the building, since the building is not a a perfect rectangle (but with 'indents') and an attempt was made to preserve the integrity of the shape of the building. A threshold of 0.05 was used to generate the concave hull, it was the smallest number we tested which attempted to preserve the building footprint the best without gaps or big distortions. 
 
-*An area of approximately $23,791m^2$ was obtained, with an approximate perimeter of $666m$.*
+*An area of approximately $20,261m^2$ was obtained, with an approximate perimeter of $856m$.*
 
 = Lab 1b
 == RTK measuring - Perimeter and Area
@@ -45,6 +48,23 @@ to calculate the statistical parameters in meters. The points are then
 
 = Lab 1b
 == Part 4 - Survey grade GNSS-RTK measurements
+
+In order to preserve as much integrity of the building shape and to obtain more accurate results, we thought it would be best to collect measurements from every corner of the building as much as possible. As such, we mapped most of the corner points of the building in QGIS (see @wanted-points) that we wanted to measure using the GNSS-RTK equipment. This entailed a total of 80 points.
+
+#align(center)[
+  #figure(image("images/part4_wanted-points_bk.png", width: 60%), caption: [Mapped points from most corners of the BK building]
+  ) <wanted-points>
+]
+
+The RTK fix status, reported horizontal (HDOP) and vertical (VDOP) accuracy, number of satellites, epoch (date and time) and antenna height are provided in Table. All points were recorded with a RTK network fix with an antenna height of 2 meters, and were taken during 20 November 2026. A report was generated from the taken measurements, with details of each recorded vertex. An example is provided for one recorded vertex, shown in @gnss-point-example.
+
+#align(center)[
+  #figure(image("images/part4_gnss_example.png", width: 100%), caption: [Example of recorded details from first GNSS recorded vertex]
+  ) <gnss-point-example>
+]
+
+For the full report with details on all recorded points, please refer to the  GitHub repository of this assignment where the report is uploaded. #footnote[The full report can be found in the data folder here: https://github.com/shelenel/geo1003_lab]
+
 
 = Lab 1c
 == Part 5 - RDNAPTRANS: perimeter, area and NAP heights 
