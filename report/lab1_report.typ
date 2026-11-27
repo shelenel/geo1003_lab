@@ -40,7 +40,52 @@ in an area with most of the sky uncovered, and one with the line of sight in the
 by a building. These locations were chosen to compare how the precision of the observations depends on the visibility of satellites.
 
 The points are first transformed into the RD system EPSG:28992. This is done to obtain the coordinate values in a cartesian system, and
-to calculate the statistical parameters in meters. The points are then
+to calculate the statistical parameters in meters. For both datasets, the means and standard deviations are calculated in each direction.
+The results are presented in the table below.
+#align(center)[
+    #table(
+      columns: 3,
+      align: center,
+      inset:7pt,
+      [*\ Direction*],[*Mean: \ Open Sky *], [*Mean: \ Blocked South *],
+      [x], [85176.34],
+      [85167.08], [y],
+      [446736.77], [446864.64],
+      [z], [47.26],
+      [77.75]
+    )
+]
+\
+
+#align(center)[
+    #table(
+      columns: 3,
+      align: center,
+      inset:7pt,
+      [*\ Direction*],[*Standard Deviation: \ Open Sky *], [*Standard Deviation: \ Blocked South *],
+      [x], [1.06],
+      [2.73], [y],
+      [1.31], [6.77],
+      [z], [2.68],
+      [10.79]
+    )
+]
+
+#align(center)[
+  #figure(image("images/scatter_1.png", width: 90%), caption: [Calculated area of BK with 'Polygon meten']
+  ) <pdok-area>
+]
+
+#align(center)[
+  #figure(image("images/scatter_2.png", width: 90%), caption: [Calculated area of BK with 'Polygon meten']
+  ) <pdok-area>
+]
+
+#align(center)[
+  #figure(image("images/scatter_together.png", width: 90%), caption: [Calculated area of BK with 'Polygon meten']
+  ) <pdok-area>
+]
+
 == Part 3 - Mission planning and DOP
 
 = Lab 1b

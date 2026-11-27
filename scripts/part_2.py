@@ -50,7 +50,8 @@ std_z = np.std(z, ddof=1)
 
 print(mean_x, mean_y, mean_z, std_x, std_y, std_z)
 
-plt.scatter(x, y, s=7)
+plt.figure()
+plt.scatter(x, y, s=7, color='blue')
 
 plt.xlabel("X [m]")
 plt.ylabel("Y [m]")
@@ -59,8 +60,11 @@ plt.axis("equal")
 plt.grid()
 plt.ticklabel_format(useOffset=False)
 plt.tight_layout()
-plt.show()
+#plt.show()
 
 plt.savefig("report/images/scatter_1.png", dpi=300)
+
+
+
 
 
