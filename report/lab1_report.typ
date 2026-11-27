@@ -51,7 +51,7 @@ From using the maps and tools from PDOK #footnote[https://app.pdok.nl/viewer/], 
 *area of 10,000$m^2$ was obtained* by tracing the building and calculating the area using 'Polygon meten'. 
 
 #align(center)[
-  #figure(image("images/part7_pdok_area.png", width: 900%), caption: [Calculated area of BK with 'Polygon meten']
+  #figure(image("images/part7_pdok_area.png", width: 90%), caption: [Calculated area of BK with 'Polygon meten']
   ) <pdok-area>
 ]
 
