@@ -26,6 +26,13 @@ Regardless, the perimeter and area were calculated based on the resulting concav
 
 *An area of approximately $23,791m^2$ was obtained, with an approximate perimeter of $666m$.*
 
+= Lab 1b
+== RTK measuring - Perimeter and Area
+
+After cleaning the data such that we can obtain the longitude and latitude for each point, we connect the points in the order they were obtained. This leads to a counterclockwise trace around the building, visible in the black lines in Figure 2. We obtain the perimeter from summing the length of the line segments using a Python script. The area was obtained using QGIS. We first turned the connected line segments into a polygon using the Polygonize function. After this we could calculate the area using the field calculator with `$area`.
+
+*We calculated an area of $13116m^2$ and a perimeter of 1141m.*
+
 
 == Part 2 - Precision of GPS code observations 
 
