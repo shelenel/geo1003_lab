@@ -12,7 +12,7 @@ def extract_latlon(file):
             latlon.append((lat,lon))
     return latlon
 
-# latlon = extract_latlon("/Users/Shelene/Desktop/Geomatics/Q2/GEO1003_Positioning/Lab/data/gnss_log_bk_walk.txt")
+latlon = extract_latlon("../data/gnss_log_bk_walk.txt")
 
 def transform_coord(latlon):
     xy = []
@@ -22,14 +22,14 @@ def transform_coord(latlon):
         xy.append((float(x),float(y)))
     return xy
 
-# xy = transform_coord(latlon)
-#
-# unique_points = np.unique(xy, axis=0)
-#
-# np.savetxt(
-#     "bk_walk_points.csv",
-#     unique_points,
-#     delimiter=",",
-#     header="x,y",
-#     comments=""
-# )
+xy = transform_coord(latlon)
+
+unique_points = np.unique(xy, axis=0)
+
+np.savetxt(
+    "../data/bk_walk_points.csv",
+    unique_points,
+    delimiter=",",
+    header="x,y",
+    comments=""
+)
