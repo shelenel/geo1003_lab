@@ -50,14 +50,16 @@ std_z = np.std(z, ddof=1)
 
 print(mean_x, mean_y, mean_z, std_x, std_y, std_z)
 
-plt.scatter(x, y, s=5)
+plt.scatter(x, y, s=7)
 
 plt.xlabel("X [m]")
 plt.ylabel("Y [m]")
 plt.title("Open sky conditions")
 plt.axis("equal")
 plt.grid()
-#plt.show()
+plt.ticklabel_format(useOffset=False)
+plt.tight_layout()
+plt.show()
 
 plt.savefig("report/images/scatter_1.png", dpi=300)
 
