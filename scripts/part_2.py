@@ -1,13 +1,9 @@
 
 
-
-import pandas as pd
 import numpy as np
 import pyproj
 import matplotlib.pyplot as plt
 
-from pathlib import Path
-from pyproj.transformer import TransformerGroup
 
 input_file = "data/gnss_log_2026_11_13_12_25_01.txt"
 
@@ -44,15 +40,6 @@ x = RD_coordinates[:, 0]
 y = RD_coordinates[:, 1]
 z = RD_coordinates[:, 2]
 
-plt.scatter(x, y, s=5)
-
-plt.xlabel("X [m]")
-plt.ylabel("Y [m]")
-plt.title("Open sky conditions")
-plt.axis("equal")
-plt.grid()
-plt.show()
-
 mean_x = np.mean(x)
 mean_y = np.mean(y)
 mean_z = np.mean(z)
@@ -60,4 +47,18 @@ mean_z = np.mean(z)
 std_x = np.std(x, ddof=1)
 std_y = np.std(y, ddof=1)
 std_z = np.std(z, ddof=1)
+
+print(mean_x, mean_y, mean_z, std_x, std_y, std_z)
+
+plt.scatter(x, y, s=5)
+
+plt.xlabel("X [m]")
+plt.ylabel("Y [m]")
+plt.title("Open sky conditions")
+plt.axis("equal")
+plt.grid()
+#plt.show()
+
+plt.savefig("report/images/scatter_1.png", dpi=300)
+
 

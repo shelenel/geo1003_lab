@@ -35,7 +35,12 @@ After cleaning the data such that we can obtain the longitude and latitude for e
 
 
 == Part 2 - Precision of GPS code observations 
+To asses the precision of the GPS observations, we made 10- minute measurements in two distinct locations - one
+in an area with most of the sky uncovered, and one with the line of sight in the southern direction blocked
+by a building. These locations were chosen to compare how the precision of the observations depends on the visibility of satellites.
 
+The points are first transformed into the RD system EPSG:28992. This is done to obtain the coordinate values in a cartesian system, and
+to calculate the statistical parameters in meters. The points are then
 == Part 3 - Mission planning and DOP
 
 = Lab 1b
