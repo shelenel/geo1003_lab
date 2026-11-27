@@ -2,7 +2,7 @@ import csv
 import json
 import numpy as np
 from typing import Any
-from coordinates import transform_coord
+from pyproj import Transformer
 
 def write_geojson(path, mygeojson):
     with open(path, "w") as f:
@@ -49,9 +49,18 @@ def make_coords(csv_file):
     coords = np.asarray(coords)
     return coords
 
+def transform(latlon):
+    xy = []
+    t = Transformer.from_crs("EPSG:4258", "EPSG:28992", always_xy=True)
+    for lat, lon in latlon:
+        x, y = t.transform(lon, lat)
+        xy.append((float(x),float(y)))
+    return xy
+
 coords = make_coords("../data/totalstation_points.csv")
 np.savetxt("../data/qgis/building_coords_part_1b.csv", coords, delimiter=",", header="y, x")
-points = transform_coord(coords)
+points = transform(coords)
+np.savetxt("../data/qgis/building_points_part_4.csv", points, delimiter=",", header="x, y")
 lines = make_lines(points)
 geojson = make_geojson(lines)
 # write_geojson("../data/qgis/building_outline_part_1b.geojson", geojson)
