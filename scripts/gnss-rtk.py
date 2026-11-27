@@ -60,7 +60,7 @@ def transform(latlon):
 coords = make_coords("../data/totalstation_points.csv")
 np.savetxt("../data/qgis/building_coords_part_1b.csv", coords, delimiter=",", header="y, x")
 points = transform(coords)
-np.savetxt("../data/qgis/building_points_part_4.csv", coords, delimiter=",", header="y, x")
+np.savetxt("../data/qgis/building_points_part_4.csv", points, delimiter=",", header="x, y")
 lines = make_lines(points)
 geojson = make_geojson(lines)
 # write_geojson("../data/qgis/building_outline_part_1b.geojson", geojson)
