@@ -94,12 +94,20 @@ The results are presented in the table below.
 = Lab 1b
 == Part 4 - Survey grade GNSS-RTK measurements
 
-In order to preserve as much integrity of the building shape and to obtain more accurate results, we thought it would be best to collect measurements from every corner of the building as much as possible. As such, we mapped most of the corner points of the building in QGIS (see @wanted-points) that we wanted to measure using the GNSS-RTK equipment. This entailed a total of 80 points.
+In order to preserve as much integrity of the building shape and to obtain more accurate results, we thought it would be best to collect measurements from every corner of the building as much as possible. 
+As such, we mapped most of the corner points of the building in QGIS (see @wanted-recorded-points) that we wanted to measure using the GNSS-RTK equipment. This entailed a total of 80 points.
+However, not all desired points were able to be recorded, due to the inaccessibility of certain corners of the buildings and bad precision in some corners.
 
-#align(center)[
-  #figure(image("images/part4_wanted-points_bk.png", width: 60%), caption: [Mapped points from most corners of the BK building]
-  ) <wanted-points>
-]
+#figure(
+  grid(
+    columns: 2,
+    gutter: 1em,
+
+    image("images/part4_wanted-points_bk.png", width: 100%),
+    image("images/part4_gnss-rtk_actualrecordedpts.png", width: 100%),
+  ),
+  caption: [*Left*: Planned points to be measured, *Right*: Points that were actually measured ]
+)<wanted-recorded-points>
 
 The RTK fix status, reported horizontal (HDOP) and vertical (VDOP) accuracy, number of satellites, epoch (date and time) and antenna height are provided in Table. All points were recorded with a RTK network fix with an antenna height of 2 meters, and were taken during 20 November 2026. A report was generated from the taken measurements, with details of each recorded vertex. An example is provided for one recorded vertex, shown in @gnss-point-example.
 
@@ -108,7 +116,7 @@ The RTK fix status, reported horizontal (HDOP) and vertical (VDOP) accuracy, num
   ) <gnss-point-example>
 ]
 
-For the full report with details on all recorded points, please refer to the  GitHub repository of this assignment where the report is uploaded. #footnote[The full report can be found in the data folder here: https://github.com/shelenel/geo1003_lab]
+For the full report with details on all recorded points, please refer to the GitHub repository of this assignment where the report is uploaded. #footnote[The full report can be found in the data folder here: https://github.com/shelenel/geo1003_lab]
 
 
 = Lab 1c
